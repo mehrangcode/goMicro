@@ -9,6 +9,21 @@ import (
 	"mehrangcode.ir/todoapp/cmd/utils"
 )
 
+type UnValidFields struct{ Messages []string }
+
+func dataValidation(data models.Task) UnValidFields {
+	var result []string
+	if data.Title == "" {
+		result = append(result, "Title is Required")
+	}
+	if data.Status == "" {
+		result = append(result, "Status is Required")
+	}
+	if data.Owner == "" {
+		result = append(result, "Owner is Required")
+	}
+	return UnValidFields{Messages: result}
+}
 func Create(w http.ResponseWriter, r *http.Request) {
 	var body models.Task = models.Task{}
 	err := utils.ReadJson(w, r, &body)
@@ -20,6 +35,11 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		Title:  body.Title,
 		Status: body.Status,
 		Owner:  body.Owner,
+	}
+	unValidFields := dataValidation(task)
+	if len(unValidFields.Messages) > 0 {
+		utils.WriteJson(w, http.StatusBadRequest, unValidFields)
+		return
 	}
 	result := initializers.DB.Create(&task)
 	if result.Error != nil {
