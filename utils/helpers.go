@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
+	"log"
 	"net/http"
 )
 
@@ -55,9 +56,9 @@ func WriteJson(w http.ResponseWriter, staus int, data interface{}, headers ...ht
 	return nil
 }
 
-func errorJson(w http.ResponseWriter, err error, status ...int) error {
+func ResponseToError(w http.ResponseWriter, err error, status ...int) error {
 	statusCode := http.StatusBadRequest
-
+	log.Printf("AN ERROR ACCURED %v", err)
 	if len(status) > 0 {
 		statusCode = status[0]
 	}
@@ -65,6 +66,7 @@ func errorJson(w http.ResponseWriter, err error, status ...int) error {
 	var payload jsonResponse
 	payload.Error = true
 	payload.Message = err.Error()
+	payload.Data = nil
 
 	return WriteJson(w, statusCode, payload)
 }

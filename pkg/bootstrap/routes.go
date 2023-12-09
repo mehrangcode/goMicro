@@ -8,6 +8,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 	coursesModule "mehrang.ir/school/internal/modules"
+	user_controller "mehrang.ir/school/internal/modules/users/controller"
 	"mehrang.ir/school/utils"
 )
 
@@ -36,5 +37,6 @@ func registerRoutes() http.Handler {
 		}
 	})
 	r.Get("/courses", coursesModule.List)
+	r.Get("/users", user_controller.List)
 	return r
 }
