@@ -1,3 +1,3 @@
-cmd.exe*
+main.exe*
 data.db
 .env
