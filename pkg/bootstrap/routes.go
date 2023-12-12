@@ -38,5 +38,9 @@ func registerRoutes() http.Handler {
 	})
 	r.Get("/courses", coursesModule.List)
 	r.Get("/users", user_controller.List)
+	r.Get("/users/{userId}", user_controller.GetById)
+	r.Post("/users", user_controller.Create)
+	r.Put("/users/{userId}", user_controller.Update)
+	r.Delete("/users/{userId}", user_controller.Delete)
 	return r
 }

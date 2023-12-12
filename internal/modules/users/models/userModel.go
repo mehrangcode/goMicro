@@ -4,7 +4,7 @@ type User struct {
 	Id         string  `json:"id"`
 	Name       string  `json:"name,omitempty"`
 	Email      string  `json:"email,omitempty"`
-	Password   string  `json:"-"`
+	Password   string  `json:"password,omitempty"`
 	Created_at *string `json:"created_at,omitempty"`
 	Updated_at *string `json:"updated_at,omitempty"`
 }
