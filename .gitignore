@@ -1,3 +1,3 @@
-school.exe*
-data.db
-.env
+backend/school.exe*
+backend/data.db
+backend/.env
