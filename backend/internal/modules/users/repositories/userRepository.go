@@ -68,7 +68,6 @@ func CreateUser(w http.ResponseWriter, r *http.Request) (id *int, err error) {
 	var query = `INSERT INTO users (name,email,password,created_at) VALUES($1,$2,$3,$4) RETURNING id`
 	var user user_model.User
 	utils.ReadJson(w, r, &user)
-	fmt.Println("\n USER ", user)
 	row := db.QueryRow(query, user.Name, user.Email, user.Password, time.Now())
 	err = row.Scan(&id)
 	if err != nil {

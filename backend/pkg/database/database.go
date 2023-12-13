@@ -47,7 +47,7 @@ func MigrateDB() error {
 			name TEXT NOT NULL,
 			email TEXT NOT NULL,
 			password TEXT NOT NULL,
-			create_at TEXT NOT NULL
+			created_at CURRENT_TIMESTAMP NOT NULL DEFAULT (now())
 		);
 		`
 	_, err := DB.Exec(query)
@@ -58,6 +58,7 @@ func MigrateDB() error {
 			title TEXT NOT NULL,
 			description TEXT NOT NULL,
 			teacherId TEXT NOT NULL,
+			created_at CURRENT_TIMESTAMP NOT NULL DEFAULT (now()),
 			FOREIGN KEY (teacherId) 
       		REFERENCES users (teacherId) 
          	ON DELETE CASCADE 

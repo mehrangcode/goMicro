@@ -2,9 +2,9 @@ import Router from "./Router";
 
 function Dashboard() {
     return (
-        <div className="rootElement">
+        <section className="rootElement">
             <Router />
-        </div>
+        </section>
     )
 }
 

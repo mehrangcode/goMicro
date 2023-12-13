@@ -1,11 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
   --backgound: #444;
+  --borderColor: #979494;
   --color: #eee;
   --link: coral;
   --primary: gold;
@@ -24,38 +19,16 @@ html[data-theme='light'] {
 
 html[data-theme='dark'] {
   --backgound: #444;
+  --borderColor: #979494;
   --color: #eee;
   --link: coral;
   --primary: gold;
   --primaryColor: #444;
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 }
 
-body {
-  background-color: var(--backgound);
-  color: var(--color);
-}
-
-a {
-  color: var(--link);
-}
-
-button {
-  background: var(--primary);
-  color: var(--primaryColor);
-  border: none;
-  border-radius: var(--radius);
-}
-
-button.gost {
-  background: var(--backgound);
-  color: var(--color);
-  border: 1px solid var(--primary);
-  border-radius: var(--radius);
-}
-
-button.gost:hover {
-  background: var(--primary);
-  color: var(--primaryColor);
-  border: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
